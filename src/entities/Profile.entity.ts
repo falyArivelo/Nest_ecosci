@@ -9,7 +9,7 @@ export class Profile {
     @Column()
     designation: string;
 
-    @ManyToOne(() => Entreprise, { nullable: false })
+    @ManyToOne(() => Entreprise, { nullable: true })
     @JoinColumn({ name: 'entreprise_id' })
     entreprise: Entreprise;
 }

@@ -2,7 +2,20 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { AnnoncesModule } from './annonces/annonces.module';
+import { CategoriesModule } from './categories/modules/Categorie.module';
+import { DechetsModule } from './dechets/modules/Dechet.module';
+import { AuthModule } from './auth/auth.module';
+import { EntreprisesModule } from './entreprises/modules/Entreprise.module';
+import { ExcelReaderModule } from './excel-reader/excel-reader.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { UploaderModule } from './uploader/uploader.module';
+import { CentreController } from './centre/centre.controller';
+import { CentreService } from './centre/centre.service';
+import { CentreModule } from './centre/centre.module';
 
+// ajout imports
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -15,8 +28,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // Mettez à true pour synchroniser automatiquement les entités avec la base de données (utile pour le développement)
     }),
+    MulterModule.register({
+      dest: './uploads', // Répertoire de destination pour enregistrer les fichiers téléchargés
+    }),
+    UsersModule,
+    AnnoncesModule,
+    CategoriesModule,
+    DechetsModule,
+    AuthModule,
+    EntreprisesModule,
+    ExcelReaderModule,
+    UploaderModule,
+    UploaderModule,
+    CentreModule
+    // a ajouter
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, CentreController,],
+  providers: [AppService, CentreService,],
 })
 export class AppModule { }
