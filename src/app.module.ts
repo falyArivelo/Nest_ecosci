@@ -14,6 +14,7 @@ import { UploaderModule } from './uploader/uploader.module';
 import { CentreController } from './centre/centre.controller';
 import { CentreService } from './centre/centre.service';
 import { CentreModule } from './centre/centre.module';
+import { EmailModule } from './mail-sender/mail-sender.module';
 
 // ajout imports
 @Module({
@@ -40,7 +41,8 @@ import { CentreModule } from './centre/centre.module';
     ExcelReaderModule,
     UploaderModule,
     UploaderModule,
-    CentreModule
+    CentreModule,
+    EmailModule
     // a ajouter
   ],
   controllers: [AppController, CentreController,],
